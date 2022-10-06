@@ -54,3 +54,5 @@ POST /tickets // 增加
 PUT /tickets/12 // 替换
 PATCH /tickets/12 // 修改
 DELETE /tickets/12 // 删除
+
+## Custom Hook 一个组件复用方案
