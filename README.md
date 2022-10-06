@@ -44,3 +44,13 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## REST API
+
+URI 代表资源和对象 METHOD 代表行为
+GET /tickets // 列表
+GET /tickets/12 // 详情
+POST /tickets // 增加
+PUT /tickets/12 // 替换
+PATCH /tickets/12 // 修改
+DELETE /tickets/12 // 删除
