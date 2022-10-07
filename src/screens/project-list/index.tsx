@@ -4,8 +4,9 @@ import { List } from "./list"
 import { SearchPanel } from "./search-panel"
 import { cleanObject, useDebounce, useMount } from '../../utils'
 import * as qs from "qs"
-const apiUrl = process.env.REACT_APP_API_URL
 
+const apiUrl = process.env.REACT_APP_API_URL
+// 使用typescript的原因 在静态代码中找到其中的一些错误 -> 强类型
 export const ProjectListScreen = () => {
     const [users, setUsers] = useState([])
 
@@ -13,7 +14,7 @@ export const ProjectListScreen = () => {
         name: '',
         personId: ''
     })
-    const debouncedParam = useDebounce(param, 2000)
+    const debouncedParam = useDebounce(param, 200)
     const [list, setList] = useState([])
 
     useEffect(() => {
