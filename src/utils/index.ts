@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const isFalsy = (value: any) => (value === 0 ? false : !value);
+export const isFalsy = (value: unknown): boolean => (value === 0 ? false : !value);
 
 // 在一个函数里，改变传入的对象本身是不好的
 export const cleanObject = (object: object) => {
@@ -27,44 +27,45 @@ export const useMount = (callback: () => void) => {
     callback();
   }, []);
 };
-// /**
-//  * 防抖
-//  * @param {*} func
-//  * @param {*} delay
-//  * @returns
-//  */
-// export const debounce = (func, delay) => {
-//   let timeout;
-//   return (...param) => {
-//     if (timeout) {
-//       clearTimeout(timeout);
-//     }
+/**
+ * 防抖
+ * @param {*} func
+ * @param {*} delay
+ * @returns
+ */
+export const debounce = (func: any, delay: number) => {
+  let timeout: any;
+  return (...param: any) => {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
 
-//     timeout = setTimeout(function () {
-//       func(...param);
-//     }, delay);
-//   };
-// };
+    timeout = setTimeout(function () {
+      func(...param);
+    }, delay);
+  };
+};
 
-// /**
-//  * 节流函数
-//  * @param {*} func
-//  * @param {*} delay
-//  * @returns
-//  */
-// export const throttle = (func, delay) => {
-//   let old = 0;
-//   return (...param) => {
-//     let now = new Date().valueOf();
-//     if (now - old > delay) {
-//       func(param);
-//       old = now;
-//     }
-//   };
-// };
-
-export const useDebounce = (value: any, delay?: number) => {
+/**
+ * 节流函数
+ * @param {*} func
+ * @param {*} delay
+ * @returns
+ */
+export const throttle = (func: any, delay: number) => {
+  let old = 0;
+  return (...param: any) => {
+    let now = new Date().valueOf();
+    if (now - old > delay) {
+      func(param);
+      old = now;
+    }
+  };
+};
+// 后面用泛型来规范类型
+export const useDebounce = (value: unknown, delay?: number): any => {
   const [debounceValue, setDebounceValue] = useState(value);
+
   useEffect(() => {
     // 每次在value变化以后 ， 设置一个定时器
     const timeout = setTimeout(() => setDebounceValue(value), delay);
