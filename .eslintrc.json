@@ -2,6 +2,5 @@
     "parserOptions": {
         "ecmaVersion": 7,
         "sourceType": "module"
-    },
-    "no-console": "off"
+    }
 }
