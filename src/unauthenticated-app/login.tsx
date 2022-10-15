@@ -1,6 +1,6 @@
 import React, { FormEvent } from 'react';
-import { useAuth } from '../../context/auth-context';
-const apiUrl = process.env.REACT_APP_API_URL
+import { useAuth } from '../context/auth-context';
+// const apiUrl = process.env.REACT_APP_API_URL
 
 // 鸭子类型： 面向接口编程 而不是面向对象编程
 export const LoginScreen = () => {

@@ -4,11 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { loadDevTools } from 'jira-dev-tool';
+import { AppProviders } from './context';
 
 
 const container = document.getElementById('root') as HTMLElement;
 
-loadDevTools(() => ReactDOM.createRoot(container).render(<App />)
+loadDevTools(() => ReactDOM.createRoot(container).render(
+    <AppProviders>
+        <App />
+    </AppProviders>
+)
 )
 
 
