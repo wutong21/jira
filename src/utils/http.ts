@@ -1,4 +1,5 @@
 
+import { type } from 'os'
 import qs from 'qs'
 const apiUrl = process.env.REACT_APP_API_URL
 import * as auth from '../auth-provider'
@@ -42,3 +43,12 @@ export const useHttp = () => {
     const { user } = useAuth()
     return (...[endpoint, config]: Parameters<typeof http>) => http(endpoint, { ...config, token: user?.token })
 }
+
+// utility type
+/**
+ * Partial 可不传
+ * Omit 可删属性
+ * 
+ * keyof T T的键值的key
+ */
+
