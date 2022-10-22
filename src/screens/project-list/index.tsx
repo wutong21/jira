@@ -5,6 +5,7 @@ import { SearchPanel } from "./search-panel"
 import { cleanObject, useDebounce, useMount } from '../../utils'
 import * as qs from "qs"
 import { useHttp } from '../../utils/http';
+import styled from '@emotion/styled';
 
 const apiUrl = process.env.REACT_APP_API_URL
 // 使用typescript的原因 在静态代码中找到其中的一些错误 -> 强类型
@@ -26,8 +27,13 @@ export const ProjectListScreen = () => {
     useMount(() => {
         client('users').then(setUsers)
     })
-    return <div>
+    return <Container>
+        <h1>项目列表</h1>
         <SearchPanel users={users} param={param} setParam={setParam} />
         <List users={users} list={list} />
-    </div>
+    </Container>
 }
+
+const Container = styled.div`
+    padding: 3.2rem;
+`

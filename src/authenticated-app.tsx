@@ -2,9 +2,11 @@ import styled from '@emotion/styled';
 import React from 'react';
 import { Row } from './components/lib';
 import { useAuth } from './context/auth-context';
+import { ReactComponent as SoftwareLogo } from './assets/software-logo.svg';
+
 
 import { ProjectListScreen } from "./screens/project-list"
-
+import { Dropdown, Menu } from 'antd';
 /**
  * grid 二维布局 从布局出发 
  * flex 一维布局 从内容出发
@@ -14,18 +16,26 @@ import { ProjectListScreen } from "./screens/project-list"
  * 从内容出发：先有一组内容（数量不固定），然后希望他们均匀的分布在容器中，
  * 由内容自己的大小决定占据的空间
  */
-
 export const AuthenticatedApp = () => {
-    const { logout } = useAuth()
+    const { logout, user } = useAuth()
     return <Container>
         <Header between={true}>
             <HeaderLeft gap={true}>
-                <h2>LOGO</h2>
+                <SoftwareLogo width={'18rem'} color={'rgb(38,132, 255)'} />
                 <h2>项目</h2>
                 <h2>用户</h2>
             </HeaderLeft>
             <HeaderRight>
-                <button onClick={logout}>登出</button>
+                <Dropdown overlay={<Menu>
+                    <Menu.Item key={'logout'}>
+                        <a onClick={logout}>登出</a>
+                    </Menu.Item>
+                </Menu>}>
+                    <a onClick={e => e.preventDefault()}>
+                        Hi, {user?.name}
+                    </a>
+                </Dropdown>
+                {/* <button onClick={logout}>登出</button> */}
             </HeaderRight>
         </Header>
         <Main>
@@ -34,14 +44,14 @@ export const AuthenticatedApp = () => {
     </Container>
 }
 
-const HeaderItemm = styled.h3`
-margin-right: 3rem`
-
 const Container = styled.div`
     height: 100vh;
 `
 
 const Header = styled(Row)`
+    padding: 1.2rem 3.2rem;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1 );
+    z-index: 1;
 `
 const HeaderLeft = styled(Row)`
 display:flex;
